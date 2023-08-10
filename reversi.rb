@@ -34,7 +34,6 @@ class Reversi
       break if QUIT_COMMANDS.include?(command)
 
       begin
-        p @current_stone
         if put_stone(@board, command, @current_stone)
           puts '配置成功、次のターン'
           toggle_stone
