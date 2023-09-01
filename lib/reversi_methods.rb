@@ -82,7 +82,7 @@ module ReversiMethods
     board.each_with_index do |cols, row|
       cols.each_with_index do |cell, col|
         position = Position.new(row, col)
-        return true if put_stone(board, position.to_cell_ref, attack_stone_color, dry_run: true)
+        return true if cell == BLANK_CELL && put_stone(board, position.to_cell_ref, attack_stone_color, dry_run: true)
       end
     end
     false
