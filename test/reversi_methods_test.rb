@@ -59,10 +59,6 @@ class ReversiMethodsTest < Minitest::Test
   end
 
   def test_cannot_put_stone
-    #! Expected true to not be truthy.
-    #TODO ここを取り組む。
-    #TODO (1)まずは、build_initial_boardを以下の配列にする
-    #TODO (2)b1に黒石を置いた時の挙動を見る。
     initial_data = <<~BOARD
       W-WWWW--
       W-BWWW--
@@ -108,7 +104,6 @@ class ReversiMethodsTest < Minitest::Test
   end
 
   def test_finished_of_full_board
-    #! Expected false to be truthy.
     assert finished?(build_board(<<~BOARD)) # 全て埋まった盤面
       WWWWWWWW
       WBBWWBWB
@@ -122,7 +117,6 @@ class ReversiMethodsTest < Minitest::Test
   end
 
   def test_finished_of_quickest_win_board
-    #! Expected false to be truthy.
     assert finished?(build_board(<<~BOARD)) # 白最短勝利
       --------
       ---W----
