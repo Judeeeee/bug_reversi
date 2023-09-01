@@ -62,9 +62,7 @@ module ReversiMethods
 
   def turn(board, target_pos, attack_stone_color, direction)
     return false if target_pos.out_of_board?
-
-    #変更箇所1️⃣。 下1行は元のコード
-    return false if target_pos.stone_color(board) == attack_stone_color
+    return false if target_pos.stone_color(board) == attack_stone_color || target_pos.stone_color(board) == BLANK_CELL
 
     next_pos = target_pos.next_position(direction)
     if (next_pos.stone_color(board) == attack_stone_color) || turn(board, next_pos, attack_stone_color, direction)
@@ -83,16 +81,11 @@ module ReversiMethods
     board.each_with_index do |cols, row|
       cols.each_with_index do |cell, col|
 
-        # 変更箇所2️⃣。 下1行は元のコード
-        next unless cell == BLANK_CELL
-
         position = Position.new(row, col)
-
-        # 変更箇所3️⃣。 下1行は元のコード
-        return true if put_stone(board, position.to_cell_ref, attack_stone_color, dry_run: true)
+        return true if cell == BLANK_CELL && put_stone(board, position.to_cell_ref, attack_stone_color, dry_run: true)
       end
     end
-    # 変更箇所4️⃣。  元のコードでは、この行に何も書かれていない
+    false
   end
 
   def count_stone(board, stone_color)
